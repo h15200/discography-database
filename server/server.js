@@ -1,14 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 const Track = require('./models/trackModel');
 const trackController = require('./controllers/trackController');
-
-console.log('ENV is', process.env.NODE_ENV);
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -24,9 +23,14 @@ mongoose
 // to parse post requests
 app.use(express.json());
 
-// set up test
-// Track.create({ name: 'test', type: 'audio' });
-app.get('/', trackController.getTracks, (req, res) => {
+if (process.env.NODE_ENV === 'production') {
+  app.use('/build', express.static(path.join(__dirname, '../build')));
+  app.get('/', (req, res) => {
+    return res.sendFile(path.join(__dirname, '../index.html'));
+  });
+}
+
+app.get('/api', trackController.getTracks, (req, res) => {
   res.status(200).end();
 });
 
