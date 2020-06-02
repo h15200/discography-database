@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fefefe;
+  color: #333;
+}
+
+h1 {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+table {
+  margin-top: 3rem;
+  width: 100%;
+  border: #333 solid 1px;
+}
+
+th {
+  text-align: left;
+  /* border: #222 solid 2px; */
+}
+
+td {}
