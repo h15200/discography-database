@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('/api', trackController.getTracks, (req, res) => {
-  res.status(200).end();
+  return res.status(200).json(res.locals.tracks);
 });
 
 // global error handler
