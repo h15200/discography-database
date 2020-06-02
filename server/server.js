@@ -6,8 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const Track = require('./models/trackModel');
-const trackController = require('./controllers/trackController');
+const trackRouters = require('./routes/track');
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -30,9 +29,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.get('/api', trackController.getTracks, (req, res) => {
-  return res.status(200).json(res.locals.tracks);
-});
+app.use('/track', trackRouters);
 
 // global error handler
 app.use((err, req, res, next) => {

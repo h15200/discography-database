@@ -28,7 +28,14 @@ class Table extends React.Component {
     const array = [testData];
 
     // take the array (from database eventually), loop and make a list of components
-
+    // incoming JSON reminder.
+    // {
+    //   name: { type: String, required: true },
+    //   type: { type: String, required: true },
+    //   artist: { type: String },
+    //   yearReleased: { type: Number },
+    //   label: { type: Number },
+    // }
     // eventually use state to store this data
     const tracks = [];
     array.forEach((track, index) => {

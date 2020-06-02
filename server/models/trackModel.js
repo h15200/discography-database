@@ -6,7 +6,7 @@ const trackSchema = new Schema({
   type: { type: String, required: true },
   artist: { type: String },
   yearReleased: { type: Number },
-  label: { type: Number },
+  label: { type: String },
 });
 
 const Track = mongoose.model('Track', trackSchema);
