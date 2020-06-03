@@ -1,7 +1,5 @@
 TODOS:
 
-Start with create track
-
 Delete
 Update
 

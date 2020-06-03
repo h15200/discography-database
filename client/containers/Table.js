@@ -34,16 +34,30 @@ class Table extends React.Component {
             <td className="artist">{track.artist}</td>
             <td className="type">{track.type}</td>
             <td className="year">{track.year}</td>
-            <td className="link">
-              <a href={track.link} target="_blank" rel="noopener noreferrer">
-                youtube
-              </a>
+
+            {track.link ? (
+              <td className="link">
+                <a
+                  href={track.link}
+                  className="linkAnchor"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  link
+                </a>
+              </td>
+            ) : (
+              <td className="link"></td>
+            )}
+            <td>
+              <button className="btn updateBtn">
+                <Link to="/update" className="updateLink">
+                  Update
+                </Link>
+              </button>
             </td>
             <td>
-              <Link to="/update">Update</Link>
-            </td>
-            <td>
-              <button>Delete</button>
+              <button className="btn deleteBtn">Delete</button>
             </td>
           </tr>
         );
@@ -51,18 +65,20 @@ class Table extends React.Component {
     }
 
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Artist</th>
-            <th>Type</th>
-            <th>Year</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>{tracks}</tbody>
-      </table>
+      <div className="tableContainer">
+        <table>
+          <thead>
+            <tr className="topRow">
+              <th>Name</th>
+              <th>Artist</th>
+              <th>Type</th>
+              <th>Year</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>{tracks}</tbody>
+        </table>
+      </div>
     );
   }
 }

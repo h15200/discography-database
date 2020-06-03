@@ -20,9 +20,19 @@ trackController.getTracks = (req, res, next) => {
 };
 
 trackController.createTrack = (req, res, next) => {
-  console.log('req body -> ', req.body);
+  if (!req.body)
+    return next({
+      message: 'error with incoming post request',
+      status: '400',
+    });
+  if (req.body.type[0] === 'other') req.body.type = req.body.type[1] || 'other';
+  else req.body.type = req.body.type[0];
+  req.body.year = parseInt(req.body.year);
 
-  return next();
+  console.log(req.body);
+  Track.create(req.body)
+    .then(() => next())
+    .catch((err) => next({ message: 'error creating Track', status: '500' }));
 };
 
 module.exports = trackController;

@@ -7,8 +7,8 @@ const CreateForm = () => {
     <>
       <h1>Create Track</h1>
       <form action="/track" method="post">
-        <label>
-          Name of project, track, or whole album
+        <label className="block">
+          Name of project, track, or whole album:
           <input
             type="text"
             name="name"
@@ -17,38 +17,71 @@ const CreateForm = () => {
           />
         </label>
 
-        <label>
-          Artist/Leader Name
+        <label className="block">
+          Artist/Leader Name:
           <input type="text" name="artist" required />
         </label>
 
-        <p>Type</p>
-        <input type="radio" name="type" value="music" id="music" required />
+        <p>Type:</p>
+        <input
+          className="radio"
+          type="radio"
+          name="type"
+          value="music"
+          id="music"
+          required
+        />
         <label htmlFor="music">Music</label>
-        <input type="radio" name="type" value="filmscore" id="filmscore" />
+        <input
+          className="radio"
+          type="radio"
+          name="type"
+          value="filmscore"
+          id="filmscore"
+        />
         <label htmlFor="film score">Film Score</label>
-        <input type="radio" name="type" value="commercial" id="commercial" />
+        <input
+          className="radio"
+          type="radio"
+          name="type"
+          value="commercial"
+          id="commercial"
+        />
         <label htmlFor="commercial">Commercial</label>
-        <label htmlFor="other">other</label>
-        <input type="text" name="type" id="other" />
+        <input
+          className="radio"
+          type="radio"
+          name="type"
+          value="other"
+          id="other"
+        />
+        <label htmlFor="other">Other</label>
+        <input
+          className="radio"
+          type="text"
+          name="type"
+          id="other"
+          placeholder="Custom Type"
+        />
 
-        <label>
-          Year of Performance or Release
+        <label className="block">
+          Year of Performance or Release:
           <input
             type="number"
             name="year"
             min="1998"
-            placeholder="1998"
+            placeholder={new Date().getFullYear()}
             required
           />
         </label>
 
-        <label>
-          Link to primary performance video or press
+        <label className="block">
+          Link to performance/press (optional):
           <input type="url" placeholder="https://youtube.com" name="link" />
         </label>
-
-        <button>Submit</button>
+        <div className="buttonContainer">
+          <button>Submit</button>
+        </div>
       </form>
     </>
   );

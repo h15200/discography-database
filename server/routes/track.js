@@ -17,8 +17,7 @@ router.get('/', trackController.getTracks, (req, res) => {
 });
 
 router.post('/', trackController.createTrack, (req, res) => {
-  console.log('redirect to home or render error on frontend');
-  res.end();
+  return res.redirect('../');
 });
 
 module.exports = router;

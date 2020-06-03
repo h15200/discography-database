@@ -8,7 +8,11 @@ const App = () => {
     <div id="app">
       <h1>Discography</h1>
       <Table />
-      <Link to="/newtrack">Create new track</Link>
+      <div className="createBtnContainer">
+        <Link className="create" to="/newtrack">
+          Create new track
+        </Link>
+      </div>
     </div>
   );
 };

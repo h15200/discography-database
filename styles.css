@@ -16,15 +16,117 @@ h1 {
   text-align: center;
 }
 
+.tableContainer {
+  display: flex;
+  justify-content: center;
+}
+
 table {
-  margin-top: 3rem;
-  width: 100%;
+  margin: 2rem 0;
   border: #333 solid 1px;
+  padding: 1rem;
+  width: 95%;
 }
 
 th {
   text-align: left;
-  /* border: #222 solid 2px; */
+  font-size: 1.2rem;
 }
 
-/* td {} */
+td {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topRow th {
+  border-bottom: 1rem transparent solid;
+
+}
+
+form {
+  border: #333 solid 1px;
+  margin: 2rem;
+  padding: 1rem;
+  background-color: #eee;
+}
+
+form input {
+  margin: 0 1rem;
+}
+
+form p {
+  margin: 0 1rem;
+}
+
+.block {
+  display: block;
+  margin: 1rem;
+}
+
+.radio {
+  margin: .5rem;
+  margin-left: 1.5rem;
+}
+
+#other {
+  margin-left: .5rem;
+}
+
+.buttonContainer {
+  text-align: right;
+}
+
+form button {
+  background-color: #6ca4e0;
+  color: #222;
+  padding: .5rem;
+  margin-right: 2rem;
+}
+
+form button:hover {
+  cursor: pointer;
+}
+
+.linkAnchor {}
+
+.btn {
+  text-decoration: none;
+  color: #333;
+  padding: .1rem;
+}
+
+.createBtnContainer {
+  text-align: right;
+}
+
+.create {
+  margin-right: 3rem;
+  border: 1px solid #333;
+  color: #333;
+  text-decoration: none;
+  padding: .3rem;
+  border-radius: 2px;
+  background-color: #6ca4e0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn {
+  padding: .2rem;
+}
+
+
+.updateLink {
+  text-decoration: none;
+  color: #333;
+}
+
+.deleteBtn {
+  font-weight: 700;
+  background-color: #f56c42;
+  border-radius: 2px;
+}
+
+.deleteBtn:hover {
+  cursor: pointer;
+}
+
+.updateBtn {}
