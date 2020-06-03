@@ -20,9 +20,8 @@ trackController.getTracks = (req, res, next) => {
 };
 
 trackController.createTrack = (req, res, next) => {
-  console.log(
-    'create track in mongo logic here, a redirect should automtically trigger setTracks w new track'
-  );
+  console.log('req body -> ', req.body);
+
   return next();
 };
 

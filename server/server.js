@@ -19,8 +19,10 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-// to parse post requests
+// to parse post requests in JSON format
 app.use(express.json());
+// to parse FORM requests
+app.use(express.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));

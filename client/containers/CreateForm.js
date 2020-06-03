@@ -23,18 +23,24 @@ const CreateForm = () => {
         </label>
 
         <p>Type</p>
-        <input type="radio" name="type" value="music" id="music" />
-        <label for="music">Music</label>
+        <input type="radio" name="type" value="music" id="music" required />
+        <label htmlFor="music">Music</label>
         <input type="radio" name="type" value="filmscore" id="filmscore" />
-        <label for="film score">Film Score</label>
+        <label htmlFor="film score">Film Score</label>
         <input type="radio" name="type" value="commercial" id="commercial" />
-        <label for="commercial">Commercial</label>
-        <label for="other">other</label>
+        <label htmlFor="commercial">Commercial</label>
+        <label htmlFor="other">other</label>
         <input type="text" name="type" id="other" />
 
         <label>
           Year of Performance or Release
-          <input type="number" name="year" required />
+          <input
+            type="number"
+            name="year"
+            min="1998"
+            placeholder="1998"
+            required
+          />
         </label>
 
         <label>
