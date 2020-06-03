@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 const trackSchema = new Schema({
   name: { type: String, required: true },
   type: { type: String, required: true },
-  artist: { type: String },
-  yearReleased: { type: Number },
-  label: { type: String },
+  artist: { type: String, required: true },
+  year: { type: Number, required: true },
+  link: { type: String, required: true },
 });
 
 const Track = mongoose.model('Track', trackSchema);

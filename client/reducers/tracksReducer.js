@@ -8,7 +8,6 @@ const tracksReducer = (state = initialState, action) => {
   let tracksList;
   switch (action.type) {
     case types.SET_TRACKS:
-      console.log('action is', action);
       return {
         ...state,
         tracksList: action.payload,

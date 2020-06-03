@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as types from '../constants/actionTypes';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
   trackList: state.tracks.tracksList,
@@ -16,44 +17,34 @@ class Table extends React.Component {
   //   super(props);
   //   // bind any methods
   componentDidMount() {
-    console.log('hello componentDidMount');
     fetch('./track')
       .then((jsonData) => jsonData.json())
       .then((data) => {
-        console.log('data coming in from fetch ->', data);
         this.props.setTracks(data);
       })
       .catch((err) => console.log(err));
   }
   render() {
-    // const testData = {
-    //   name: 'testName',
-    //   type: 'jazz',
-    //   artist: 'Hideaki',
-    //   year: '2010',
-    //   label: 'leadingTone Records',
-    // };
-
-    // take the array (from database eventually), loop and make a list of components
-    // incoming JSON reminder.
-    // {
-    //   name: { type: String, required: true },
-    //   type: { type: String, required: true },
-    //   artist: { type: String },
-    //   yearReleased: { type: Number },
-    //   label: { type: String },
-    // }
-    // eventually use state to store this data
     const tracks = [];
-    if (this.props.trackList.length > 1) {
+    if (this.props.trackList.length > 0) {
       this.props.trackList.forEach((track, index) => {
         tracks.push(
           <tr className="track" key={`track${index}`}>
             <td className="name">{track.name}</td>
-            <td className="type">{track.type}</td>
             <td className="artist">{track.artist}</td>
+            <td className="type">{track.type}</td>
             <td className="year">{track.year}</td>
-            <td className="label">{track.label}</td>
+            <td className="link">
+              <a href={track.link} target="_blank" rel="noopener noreferrer">
+                youtube
+              </a>
+            </td>
+            <td>
+              <Link to="/update">Update</Link>
+            </td>
+            <td>
+              <button>Delete</button>
+            </td>
           </tr>
         );
       });
@@ -63,11 +54,11 @@ class Table extends React.Component {
       <table>
         <thead>
           <tr>
-            <th>Track Name</th>
-            <th>Type</th>
+            <th>Name</th>
             <th>Artist</th>
-            <th>Year Released</th>
-            <th>Label</th>
+            <th>Type</th>
+            <th>Year</th>
+            <th>Link</th>
           </tr>
         </thead>
         <tbody>{tracks}</tbody>
