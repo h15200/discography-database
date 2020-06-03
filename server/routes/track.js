@@ -12,7 +12,7 @@ const router = express.Router();
 // });
 
 // router.get
-router.get('/track', trackController.getTracks, (req, res) => {
+router.get('/', trackController.getTracks, (req, res) => {
   return res.status(200).json(res.locals.tracks);
 });
 

@@ -1,2 +1,2 @@
 export const ADD_TRACK = 'ADD_TRACK';
-export const GET_TRACKS = 'GET_TRACKs';
+export const SET_TRACKS = 'SET_TRACKS';

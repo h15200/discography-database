@@ -8,6 +8,7 @@ trackController.getTracks = (req, res, next) => {
     .exec()
     .then((results) => {
       res.locals.tracks = results;
+
       return next();
     })
     .catch((err) => {

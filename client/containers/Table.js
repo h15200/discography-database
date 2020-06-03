@@ -1,31 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as types from '../constants/actionTypes';
-import { render } from 'react-dom';
 
 const mapStateToProps = (state) => ({
   trackList: state.tracks.tracksList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getTracks: () => dispatch({ type: types.GET_TRACKS }),
-  addTrack: () => dispatch({ type: types.ADD_TRACK }),
+  setTracks: (data) => dispatch({ type: types.SET_TRACKS, payload: data }),
+  addTrack: (data) => dispatch({ type: types.ADD_TRACK, payload: data }),
 });
 
 class Table extends React.Component {
   // contructor(props) {
   //   super(props);
   //   // bind any methods
+  componentDidMount() {
+    console.log('hello componentDidMount');
+    fetch('./track')
+      .then((jsonData) => jsonData.json())
+      .then((data) => {
+        console.log('data coming in from fetch ->', data);
+        this.props.setTracks(data);
+      })
+      .catch((err) => console.log(err));
+  }
   render() {
-    const testData = {
-      name: 'testName',
-      type: 'jazz',
-      artist: 'Hideaki',
-      year: '2010',
-      label: 'leadingTone Records',
-    };
-
-    const array = [testData];
+    // const testData = {
+    //   name: 'testName',
+    //   type: 'jazz',
+    //   artist: 'Hideaki',
+    //   year: '2010',
+    //   label: 'leadingTone Records',
+    // };
 
     // take the array (from database eventually), loop and make a list of components
     // incoming JSON reminder.
@@ -34,21 +41,23 @@ class Table extends React.Component {
     //   type: { type: String, required: true },
     //   artist: { type: String },
     //   yearReleased: { type: Number },
-    //   label: { type: Number },
+    //   label: { type: String },
     // }
     // eventually use state to store this data
     const tracks = [];
-    array.forEach((track, index) => {
-      tracks.push(
-        <tr className="track" key={`track${index}`}>
-          <td className="name">{track.name}</td>
-          <td className="type">{track.type}</td>
-          <td className="artist">{track.artist}</td>
-          <td className="year">{track.year}</td>
-          <td className="label">{track.label}</td>
-        </tr>
-      );
-    });
+    if (this.props.trackList.length > 1) {
+      this.props.trackList.forEach((track, index) => {
+        tracks.push(
+          <tr className="track" key={`track${index}`}>
+            <td className="name">{track.name}</td>
+            <td className="type">{track.type}</td>
+            <td className="artist">{track.artist}</td>
+            <td className="year">{track.year}</td>
+            <td className="label">{track.label}</td>
+          </tr>
+        );
+      });
+    }
 
     return (
       <table>
