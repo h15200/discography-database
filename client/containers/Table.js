@@ -13,9 +13,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Table extends React.Component {
-  // contructor(props) {
-  //   super(props);
-  //   // bind any methods
   componentDidMount() {
     fetch('./track')
       .then((jsonData) => jsonData.json())
@@ -51,7 +48,7 @@ class Table extends React.Component {
             )}
             <td>
               <button className="btn updateBtn">
-                <Link to="/update" className="updateLink">
+                <Link to={`/track/update/${track._id}`} className="updateLink">
                   Update
                 </Link>
               </button>
