@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setTracks: (data) => dispatch({ type: types.SET_TRACKS, payload: data }),
-  addTrack: (data) => dispatch({ type: types.ADD_TRACK, payload: data }),
+  addTrack: (data) => dispatch({ type: types.SET_CURRENT, payload: data }),
 });
 
 class Table extends React.Component {

@@ -5,7 +5,7 @@ export const setTracks = (trackArray) => ({
   payload: trackArray,
 });
 
-export const addTrack = (trackData) => ({
-  type: types.ADD_TRACK,
+export const setCurrent = (trackData) => ({
+  type: types.SET_CURRENT,
   payload: trackData,
 });

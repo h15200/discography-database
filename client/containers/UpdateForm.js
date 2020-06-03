@@ -4,40 +4,44 @@ import * as types from '../constants/actionTypes';
 
 const mapStateToProps = (state) => ({
   tracksList: state.tracks.tracksList,
+  currentTrack: state.tracks.currentTrack,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setCurrent: (data) => dispatch({ type: types.SET_CURRENT, payload: data }),
 });
 
 // const UpdateForm = () => {
-//   console.log('url is->', window.location.href);
 //   const id = window.location.href.split('update/')[1];
+//   if (this.props.tracksList[i]._id === id) {
+//     trackToUpdate = this.props.tracksList[i];
+//     return console.log('found', trackToUpdate);
+//   }
 //   console.log(id);
 //   return (
-
+//     <>
+//       <h1>Update Track</h1>
+//     </>
 //   );
 // };
 
 class UpdateForm extends React.Component {
-  constructor(super) {
-    super(props);
-    this.trackToUpdate = undefined;
-  }
   componentDidMount() {
-    let trackToUpdate;
     const id = window.location.href.split('update/')[1];
     for (let i = 0; i < this.props.tracksList.length; i++) {
       if (this.props.tracksList[i]._id === id) {
-        trackToUpdate = this.props.tracksList[i];
-        return console.log('found', trackToUpdate);
+        this.props.setCurrent(this.props.tracksList[i]);
       }
     }
   }
+
   render() {
     return (
-      <div>
-        <h1>Update Track</h1>
-        <form action=""></form>
-      </div>
+      <>
+        <h1>Update Form</h1>
+      </>
     );
   }
 }
 
-export default connect(mapStateToProps, null)(UpdateForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateForm);

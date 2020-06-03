@@ -2,6 +2,7 @@ import * as types from '../constants/actionTypes';
 
 const initialState = {
   tracksList: [],
+  currentTrack: {},
 };
 
 const tracksReducer = (state = initialState, action) => {
@@ -12,13 +13,8 @@ const tracksReducer = (state = initialState, action) => {
         ...state,
         tracksList: action.payload,
       };
-    case types.ADD_TRACK:
-      // use payload to append
-      // tracksList = [...state.tracksList, newTrackFromPayload]
-      // return {
-      //  tracksList
-      // }
-      return { ...state };
+    case types.SET_CURRENT:
+      return { ...state, currentTrack: action.payload };
     default:
       return state;
   }
