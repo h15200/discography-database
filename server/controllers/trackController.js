@@ -20,9 +20,9 @@ trackController.getTracks = (req, res, next) => {
 };
 
 trackController.createTrack = (req, res, next) => {
-  if (!req.body)
+  if (Object.keys(req.body).length < 1)
     return next({
-      message: 'error with incoming post request for create new track',
+      message: 'error with incoming post request for createTrack middleware',
       status: '400',
     });
   if (req.body.type[0] === 'other') req.body.type = req.body.type[1] || 'other';
@@ -35,22 +35,18 @@ trackController.createTrack = (req, res, next) => {
 };
 
 trackController.updateTrack = (req, res, next) => {
-  if (!req.body)
+  if (Object.keys(req.body).length < 1)
     return next({
-      message: 'error with incoming post request for update track',
+      message: 'error with incoming post request for updateTrack middleware',
       status: '400',
     });
-  Track.findOne({ _id: req.params.id })
-    .exec()
-    .then((track) => {
-      if (track === null)
-        return next({ message: 'track not found', status: '500' });
-      res.locals = track;
-      return next();
-    })
-    .catch((err) =>
-      next({ message: 'error finding id in update', status: '500' })
-    );
+  if (req.body.type[0] === 'other') req.body.type = req.body.type[1] || 'other';
+  else req.body.type = req.body.type[0];
+  req.body.year = parseInt(req.body.year);
+
+  Track.findOneAndUpdate({ id: req.body._id }, req.body)
+    .then(() => next())
+    .catch((err) => next({ message: 'error creating Track', status: '500' }));
 };
 
 module.exports = trackController;

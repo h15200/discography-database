@@ -16,6 +16,8 @@ h1 {
   text-align: center;
 }
 
+/************   TABLE  ***********/
+
 .tableContainer {
   display: flex;
   justify-content: center;
@@ -41,6 +43,55 @@ td {
   border-bottom: 1rem transparent solid;
 
 }
+
+.linkAnchor {}
+
+
+
+.btn {
+  text-decoration: none;
+  color: #333;
+  padding: .1rem;
+}
+
+.createBtnContainer {
+  text-align: right;
+}
+
+.create {
+  margin-right: 3rem;
+  border: 1px solid #333;
+  color: #333;
+  text-decoration: none;
+  padding: .3rem;
+  border-radius: 2px;
+  background-color: #6ca4e0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn {
+  padding: .2rem;
+}
+
+
+.updateLink {
+  text-decoration: none;
+  color: #333;
+}
+
+.deleteBtn {
+  font-weight: 700;
+  background-color: #f56c42;
+  border-radius: 2px;
+}
+
+.deleteBtn:hover {
+  cursor: pointer;
+}
+
+.updateBtn {}
+
+/**************** FORM ******************/
 
 form {
   border: #333 solid 1px;
@@ -86,47 +137,13 @@ form button:hover {
   cursor: pointer;
 }
 
-.linkAnchor {}
-
-.btn {
-  text-decoration: none;
-  color: #333;
-  padding: .1rem;
+.currentTrack h2 {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
 }
 
-.createBtnContainer {
-  text-align: right;
+.currentTrack li {
+  list-style: none;
+  margin-left: 3rem;
+
 }
-
-.create {
-  margin-right: 3rem;
-  border: 1px solid #333;
-  color: #333;
-  text-decoration: none;
-  padding: .3rem;
-  border-radius: 2px;
-  background-color: #6ca4e0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.btn {
-  padding: .2rem;
-}
-
-
-.updateLink {
-  text-decoration: none;
-  color: #333;
-}
-
-.deleteBtn {
-  font-weight: 700;
-  background-color: #f56c42;
-  border-radius: 2px;
-}
-
-.deleteBtn:hover {
-  cursor: pointer;
-}
-
-.updateBtn {}

@@ -10,9 +10,8 @@ router.post('/', trackController.createTrack, (req, res) => {
   return res.redirect('../');
 });
 
-router.post('/update/:id', trackController.updateTrack, (req, res) => {
-  console.log('res.locals -> ', res.locals);
-  return res.end();
+router.post('/update', trackController.updateTrack, (req, res) => {
+  return res.redirect('../../');
 });
 
 module.exports = router;

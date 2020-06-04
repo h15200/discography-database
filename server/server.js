@@ -37,7 +37,7 @@ app.use('/track', trackRouters);
 app.use((err, req, res, next) => {
   const errorMessage = err.message || 'Unknown middleware error';
   const errorStatus = err.status || 500;
-  console.log(errorMessage, errorStatus);
+  console.log(`Message: ${errorMessage}\nStatus code: ${errorStatus}`);
   return res.status(errorStatus).send(errorMessage);
 });
 

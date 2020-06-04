@@ -21,6 +21,15 @@ class Table extends React.Component {
       })
       .catch((err) => console.log(err));
   }
+
+  handleDelete(e) {
+    console.log('e.target', e.target);
+    const result = confirm('Are you sure you want to delete this entry?');
+    if (result) {
+      console.log('confirmed');
+      // delete from database
+    } else return;
+  }
   render() {
     const tracks = [];
     if (this.props.trackList.length > 0) {
@@ -54,7 +63,13 @@ class Table extends React.Component {
               </button>
             </td>
             <td>
-              <button className="btn deleteBtn">Delete</button>
+              <button
+                onClick={this.handleDelete}
+                className="btn deleteBtn"
+                id={track._id}
+              >
+                Delete
+              </button>
             </td>
           </tr>
         );

@@ -1,6 +1,6 @@
 import React from 'react';
-import Table from './containers/Table';
-import styles from '../styles.css';
+import Table from '../containers/Table';
+import styles from '../../styles.css';
 import { Link } from 'react-router-dom';
 
 const App = () => {
