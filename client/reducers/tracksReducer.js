@@ -4,11 +4,11 @@ const initialState = {
   tracksList: [],
   currentTrack: {},
   sortBy: {
-    name: '',
-    artist: '',
-    type: '',
-    year: 'desc',
-    link: '',
+    name: 'asc',
+    artist: 'asc',
+    type: 'asc',
+    year: 'asc',
+    link: 'asc',
   },
 };
 

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
   trackList: state.tracks.tracksList,
+  sortBy: state.tracks.sortBy,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -44,16 +45,14 @@ class Table extends React.Component {
 
   handleSort(e) {
     const sortBy = e.target.innerText.toLowerCase();
-    this.props.toggleSortOrder(sortBy);
-    // toggle order
-
-    // fetch using both sortBy and order
-    // fetch('./track?sortBy=artist&order=')
-    //   .then((jsonData) => jsonData.json())
-    //   .then((data) => {
-    //     this.props.setTracks(data);
-    //   })
-    //   .catch((err) => console.log(err));
+    fetch(`./track?sortBy=${sortBy}&order=${this.props.sortBy[sortBy]}`)
+      .then((jsonData) => jsonData.json())
+      .then((data) => {
+        this.props.setTracks(data);
+        // toggle order for next time
+        this.props.toggleSortOrder(sortBy);
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
