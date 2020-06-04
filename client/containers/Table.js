@@ -23,11 +23,15 @@ class Table extends React.Component {
   }
 
   handleDelete(e) {
-    console.log('e.target', e.target);
     const result = confirm('Are you sure you want to delete this entry?');
     if (result) {
-      console.log('confirmed');
-      // delete from database
+      fetch(`./track/${e.target.id}`, {
+        method: 'DELETE',
+      })
+        .then(() => {
+          return window.location.reload();
+        })
+        .catch(() => console.log('problem with delete request'));
     } else return;
   }
   render() {

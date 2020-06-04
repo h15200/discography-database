@@ -14,4 +14,8 @@ router.post('/update', trackController.updateTrack, (req, res) => {
   return res.redirect('../../');
 });
 
+router.delete('/:id', trackController.deleteTrack, (req, res) => {
+  return res.redirect(303, '../');
+});
+
 module.exports = router;

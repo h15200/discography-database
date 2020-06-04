@@ -45,8 +45,23 @@ trackController.updateTrack = (req, res, next) => {
   req.body.year = parseInt(req.body.year);
 
   Track.findOneAndUpdate({ id: req.body._id }, req.body)
+    .exec()
     .then(() => next())
     .catch((err) => next({ message: 'error creating Track', status: '500' }));
+};
+
+trackController.deleteTrack = (req, res, next) => {
+  Track.findByIdAndDelete(req.params.id)
+    .exec()
+    .then((deleted) => {
+      return next();
+    })
+    .catch((err) =>
+      next({
+        message: 'error in findOneAndDelete middleware',
+        status: '500',
+      })
+    );
 };
 
 module.exports = trackController;
