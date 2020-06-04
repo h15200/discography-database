@@ -11,20 +11,6 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrent: (data) => dispatch({ type: types.SET_CURRENT, payload: data }),
 });
 
-// const UpdateForm = () => {
-//   const id = window.location.href.split('update/')[1];
-//   if (this.props.tracksList[i]._id === id) {
-//     trackToUpdate = this.props.tracksList[i];
-//     return console.log('found', trackToUpdate);
-//   }
-//   console.log(id);
-//   return (
-//     <>
-//       <h1>Update Track</h1>
-//     </>
-//   );
-// };
-
 class UpdateForm extends React.Component {
   componentDidMount() {
     const id = window.location.href.split('update/')[1];
