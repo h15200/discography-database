@@ -1,10 +1,16 @@
 const express = require('express');
 const trackController = require('../controllers/trackController');
+const userController = require('../controllers/userController');
 const router = express.Router();
 
-router.get('/', trackController.getTracks, (req, res) => {
-  return res.status(200).json(res.locals.tracks);
-});
+router.get(
+  '/',
+  userController.isLogged,
+  trackController.getTracks,
+  (req, res) => {
+    return res.status(200).json(res.locals.tracks);
+  }
+);
 
 router.post('/', trackController.createTrack, (req, res) => {
   return res.redirect('../');

@@ -7,6 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const trackRouters = require('./routes/track');
+const loginRouters = require('./routes/login');
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -33,6 +34,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/track', trackRouters);
+app.use('/login', loginRouters);
 
 // global error handler
 app.use((err, req, res, next) => {

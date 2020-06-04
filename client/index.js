@@ -3,7 +3,6 @@ import reactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import store from './store';
-
 import App from './components/App';
 import CreateForm from './components/CreateForm';
 import UpdateForm from './containers/UpdateForm';
