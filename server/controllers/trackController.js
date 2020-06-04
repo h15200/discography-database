@@ -4,7 +4,10 @@ const Track = require('../models/trackModel');
 const trackController = {};
 
 trackController.getTracks = (req, res, next) => {
+  const sortBy = req.query.sortBy || 'year';
+  const order = req.query.order || 'desc';
   Track.find()
+    .sort({ [sortBy]: [order] })
     .exec()
     .then((results) => {
       res.locals.tracks = results;

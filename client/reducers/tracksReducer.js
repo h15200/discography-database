@@ -3,10 +3,16 @@ import * as types from '../constants/actionTypes';
 const initialState = {
   tracksList: [],
   currentTrack: {},
+  sortBy: {
+    name: '',
+    artist: '',
+    type: '',
+    year: 'desc',
+    link: '',
+  },
 };
 
 const tracksReducer = (state = initialState, action) => {
-  let tracksList;
   switch (action.type) {
     case types.SET_TRACKS:
       return {
@@ -15,6 +21,21 @@ const tracksReducer = (state = initialState, action) => {
       };
     case types.SET_CURRENT:
       return { ...state, currentTrack: action.payload };
+
+    case types.TOGGLE_SORT_ORDER:
+      let newOrder;
+      // get the type-specific order from current state
+      const currentOrder = state.sortBy[action.payload];
+      // toggle
+      if (currentOrder === '' || currentOrder === 'desc') {
+        newOrder = 'asc';
+      } else {
+        newOrder = 'desc';
+      }
+      let newSortBy = { ...state.sortBy };
+      newSortBy[action.payload] = newOrder;
+
+      return { ...state, sortBy: newSortBy };
     default:
       return state;
   }

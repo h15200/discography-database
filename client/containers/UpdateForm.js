@@ -69,10 +69,10 @@ class UpdateForm extends React.Component {
             className="radio"
             type="radio"
             name="type"
-            value="filmscore"
-            id="filmscore"
+            value="film"
+            id="film"
           />
-          <label htmlFor="film score">Film Score</label>
+          <label htmlFor="film">Film</label>
           <input
             className="radio"
             type="radio"

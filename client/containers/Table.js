@@ -10,9 +10,16 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setTracks: (data) => dispatch({ type: types.SET_TRACKS, payload: data }),
   addTrack: (data) => dispatch({ type: types.SET_CURRENT, payload: data }),
+  toggleSortOrder: (sortBy) =>
+    dispatch({ type: types.TOGGLE_SORT_ORDER, payload: sortBy }),
 });
 
 class Table extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSort = this.handleSort.bind(this);
+  }
+
   componentDidMount() {
     fetch('./track')
       .then((jsonData) => jsonData.json())
@@ -34,6 +41,21 @@ class Table extends React.Component {
         .catch(() => console.log('problem with delete request'));
     } else return;
   }
+
+  handleSort(e) {
+    const sortBy = e.target.innerText.toLowerCase();
+    this.props.toggleSortOrder(sortBy);
+    // toggle order
+
+    // fetch using both sortBy and order
+    // fetch('./track?sortBy=artist&order=')
+    //   .then((jsonData) => jsonData.json())
+    //   .then((data) => {
+    //     this.props.setTracks(data);
+    //   })
+    //   .catch((err) => console.log(err));
+  }
+
   render() {
     const tracks = [];
     if (this.props.trackList.length > 0) {
@@ -85,11 +107,11 @@ class Table extends React.Component {
         <table>
           <thead>
             <tr className="topRow">
-              <th>Name</th>
-              <th>Artist</th>
-              <th>Type</th>
-              <th>Year</th>
-              <th>Link</th>
+              <th onClick={this.handleSort}>Name</th>
+              <th onClick={this.handleSort}>Artist</th>
+              <th onClick={this.handleSort}>Type</th>
+              <th onClick={this.handleSort}>Year</th>
+              <th onClick={this.handleSort}>Link</th>
             </tr>
           </thead>
           <tbody>{tracks}</tbody>
