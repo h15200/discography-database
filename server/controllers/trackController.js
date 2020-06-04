@@ -32,7 +32,9 @@ trackController.createTrack = (req, res, next) => {
   else req.body.type = req.body.type[0];
   req.body.year = parseInt(req.body.year);
 
-  Track.create(req.body)
+  const trackData = req.body;
+
+  Track.create(trackData)
     .then(() => next())
     .catch((err) => next({ message: 'error creating Track', status: '500' }));
 };
